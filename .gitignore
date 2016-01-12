@@ -38,4 +38,6 @@ Thumbs.db
 *.ipr
 *.iws
 
+*.iml
+
 /target

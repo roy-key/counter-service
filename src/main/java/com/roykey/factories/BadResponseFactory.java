@@ -8,9 +8,17 @@ import org.springframework.http.ResponseEntity;
 
 /**
  * Created by roykey on 12/01/2016.
+ *
+ * Create a proper response upon the HTTP status.
  */
 public class BadResponseFactory {
 
+    /**
+     * Crate bad response response entity.
+     *
+     * @param counterException the counter exception
+     * @return the response entity
+     */
     public static ResponseEntity<BasicResponse> crateBadResponse(CounterException counterException) {
 
         ResponseEntity<BasicResponse> res;

@@ -8,6 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by roykey on 11/01/2016.
+ *
+ * Represented the Counter document in the DB.
  */
 @Document(collection = CommonParameters.DB_COLLECTION_COUNTERS)
 public class CounterEntity {
@@ -16,26 +18,50 @@ public class CounterEntity {
     private String id;
     private AtomicInteger incrementer;
 
+    /**
+     * Instantiates a new Counter entity.
+     */
     public CounterEntity() {
         incrementer = new AtomicInteger();
     }
 
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets the id.
+     *
+     * @param id the id
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * Gets the count.
+     *
+     * @return the count
+     */
     public int getCount() {
         return incrementer.get();
     }
 
+    /**
+     * Gets the and increment.
+     */
     public void getAndIncrement() {
         incrementer.getAndIncrement();
     }
 
+    /**
+     * Gets the and decrement.
+     */
     public void getAndDecrement() {
         incrementer.getAndDecrement();
     }

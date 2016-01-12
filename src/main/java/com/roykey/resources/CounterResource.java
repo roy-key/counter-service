@@ -26,6 +26,11 @@ public class CounterResource {
     @Resource
     private Counter counter;
 
+    /**
+     * Create counter response entity.
+     *
+     * @return the response entity
+     */
     @RequestMapping(
             value = "counters",
             method = RequestMethod.POST,
@@ -37,6 +42,12 @@ public class CounterResource {
 
     }
 
+    /**
+     * Add to counter response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @RequestMapping(
             value = "counters/{id}/add",
             method = RequestMethod.POST,
@@ -52,6 +63,12 @@ public class CounterResource {
 
     }
 
+    /**
+     * Subtract from counter response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @RequestMapping(
             value = "counters/{id}/subtract",
             method = RequestMethod.POST,
@@ -66,6 +83,12 @@ public class CounterResource {
         }
     }
 
+    /**
+     * Gets counter details.
+     *
+     * @param id the id
+     * @return the counter details
+     */
     @RequestMapping(
             value = "counters/{id}",
             method = RequestMethod.GET,
@@ -80,6 +103,11 @@ public class CounterResource {
         }
     }
 
+    /**
+     * Gets all counter details.
+     *
+     * @return the all counter details
+     */
     @RequestMapping(
             value = "counters",
             method = RequestMethod.GET,

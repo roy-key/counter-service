@@ -18,14 +18,33 @@ public class CounterDAO {
     @Autowired
     private CounterRepository counterRepository;
 
+    /**
+     * Insert counter entity to db counter entity.
+     *
+     * @param counterEntity the counter entity
+     * @return the counter entity
+     */
     public CounterEntity insertCounterEntityToDB(CounterEntity counterEntity){
         return counterRepository.insert(counterEntity);
     }
 
+    /**
+     * Update counter entity from db counter entity.
+     *
+     * @param counterEntity the counter entity
+     * @return the counter entity
+     */
     public CounterEntity updateCounterEntityFromDB(CounterEntity counterEntity){
         return counterRepository.save(counterEntity);
     }
 
+    /**
+     * Gets the counter entity.
+     *
+     * @param id the id
+     * @return the counter entity
+     * @throws CounterException the counter exception
+     */
     public CounterEntity getCounterEntity(String id) throws CounterException {
         CounterEntity counterEntity = counterRepository.findOne(id);
         if (counterEntity == null){
@@ -34,6 +53,11 @@ public class CounterDAO {
         return counterEntity;
     }
 
+    /**
+     * Get all counter entities list.
+     *
+     * @return the list
+     */
     public List<CounterEntity> getAllCounterEntities(){
         List<CounterEntity> counterEntityList = counterRepository.findAll();
         return counterEntityList;

@@ -8,7 +8,6 @@ import com.roykey.excaptions.CounterException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 public class CounterService implements Counter {
 
     @Autowired
-    @Resource
     private CounterDAO counterDAO;
 
     @Override

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 /**
  * Created by roykey on 11/01/2016.
  */
@@ -23,7 +21,6 @@ import javax.annotation.Resource;
 public class CounterResource {
 
     @Autowired
-    @Resource
     private Counter counter;
 
     /**

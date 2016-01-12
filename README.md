@@ -8,7 +8,7 @@ The counter-service supports this API's:
 - Add 1 to the counter
 - Subtract 1 the from counter
 - Get the counter details.
-
+- Get all counters details.
 
 ### Responses
 - The response json will be hold 2 main attributes:
@@ -139,6 +139,35 @@ Example of a bad response - 404 not found:
 }
 ```
 
+
+##### Get all counter details
+Description:
+- Get all the counters details currently in the DB.
+
+Path: 
+- GET /counters
+
+responseObject: 
+- counterResponseList : - id = the id of the counter.
+			- counterValue = the current value of the counter.
+
+Example of a successful response: 
+```json
+{
+	"responseObject": {
+		"counterResponseList" : [
+		{ 
+			"id": "5693f2fad4c6132bd88af014",
+			"counterValue": 0
+		},
+		{ 
+			"id": "5693f2fad4c61qcw388af014",
+			"counterValue": 5
+		} ]
+	},
+	"responseStatus": 0
+}
+```
 
 ### List of error codes:
 

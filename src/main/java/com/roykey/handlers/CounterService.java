@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * Created by roykey on 11/01/2016.
  */
 @Component
-public class CounterHandler implements Counter {
+public class CounterService implements Counter {
 
     @Autowired
     @Resource

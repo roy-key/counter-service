@@ -53,14 +53,16 @@ public class CounterEntity {
     }
 
     /**
-     * Gets the and increment.
+     * Calls the and increment of the incrementer.
+     * Atomically increase the value by 1.
      */
     public void getAndIncrement() {
         incrementer.getAndIncrement();
     }
 
     /**
-     * Gets the and decrement.
+     * Calls the and decrement of the incrementer.
+     * Atomically decrease the value by 1.
      */
     public void getAndDecrement() {
         incrementer.getAndDecrement();

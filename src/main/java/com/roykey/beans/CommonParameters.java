@@ -10,4 +10,6 @@ public class CommonParameters {
 
     //DB collections names
     public static final String DB_COLLECTION_COUNTERS = "counters";
+
+    public static final int RESPONSE_STATUS_SUCCESS = 0;
 }

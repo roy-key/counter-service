@@ -95,16 +95,28 @@ public class CounterTest {
     }
 
     @Test
-    public void e_get_counter_details() {
+    public void e_get_counter_details_of_unknown_id() {
 
         Response response =
                 expect().
                         body("responseStatus", equalTo((1001))).
-                        body("responseObject.errorMessage", equalTo("counterId: abc was not found, please check you id and try again")).
+                        body("responseObject.errorMessage", equalTo("counterId: abc wasn't found, please check your id and try again")).
                         statusCode(HttpStatus.SC_NOT_FOUND).
                         when().
-                        log().body().
                         get("counters/" + "abc");
+    }
+
+    @Test
+    public void f_get_all_counters_details() {
+
+        Response response =
+                expect().
+                        body("responseStatus", equalTo((0))).
+                        body("responseObject.counterResponseList", notNullValue()).
+                        statusCode(HttpStatus.SC_OK).
+                        log().body().
+                        when().
+                        get("counters");
     }
 
 

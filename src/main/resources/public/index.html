@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css" />
     <script>
 		var createCounter = function(){
 
@@ -13,7 +14,7 @@
                     handleResponse(data);
   				},
   				error: function(e) {
-					console.log(e.message);
+					$('#exceptions').val(e.responseJSON.responseObject.errorMessage);
   				}
 			});
 
@@ -28,7 +29,7 @@
                     handleResponse(data);
   				},
   				error: function(e) {
-					console.log(e.message);
+					$('#exceptions').val(e.responseJSON.responseObject.errorMessage);
   				}
 			});
 		}
@@ -42,7 +43,7 @@
                     handleResponse(data);
   				},
   				error: function(e) {
-					console.log(e.message);
+					$('#exceptions').val(e.responseJSON.responseObject.errorMessage);
   				}
 			});
 
@@ -57,67 +58,68 @@
                     handleResponse(data);
   				},
   				error: function(e) {
-					console.log(e.message);
+					$('#exceptions').val(e.responseJSON.responseObject.errorMessage);
   				}
 			});
 		}
 
+    var getAllCounters = function(){
+
+			$.ajax({
+ 			 	url: 'counters',
+  				type: 'GET',
+  				success: function(data) {
+                    handleGetAllResponse(data);
+  				},
+  				error: function(e) {
+					$('#exceptions').val(e.responseJSON.responseObject.errorMessage);
+  				}
+			});
+    }
+
 		var handleResponse = function(data){
-            if (data.responseStatus == 0){
 
-                $('#CValue').val(data.responseObject.counterValue);
-                $('#CID').val(data.responseObject.id);
+            $('#CValue').val(data.responseObject.counterValue);
+            $('#CID').val(data.responseObject.id);
 
-			}else{
-				    console.log(data.responseObject.errorMessage);
-				}
 		}
+
+		var handleGetAllResponse = function(data){
+            var arr = [];
+            var responseArr = data.responseObject.counterResponseList;
+            for (i = 0; i < responseArr.length; i++) {
+                 arr.push(responseArr[i].id);
+            }
+
+            $('#AID').val(arr.join(", "));
+        }
+
 	</script>
-
-
-    <style>
-        .outer{
-                width:500px;
-                padding:20px auto;
-                margin:50px auto;
-        }
-        .btn{
-                margin-bottom:20px;
-                clear:both;
-                float:left;
-        }
-        .clearfix:after{
-                visibility: hidden;
-                display: block;
-                font-size: 0;
-                content: " ";
-                clear: both;
-                height: 0;
-        }
-        .responseContainer{
-                float:right;
-		        width:300px;
-	    }
-	    .btnsContainer{
-	        	float:left;
-        }
-    </style>
 
     <title>Cunter Project</title>
 </head>
 
 <body>
-<div class="outer">
+<h1>Counter Project</h1>
+<div class="outer clearfix">
+
     <div class="btnsContainer clearfix">
-        <div class="responseContainer">
-    			Counter Value: <input id="CValue" type="text" name="CValue" size="35" ><br /><br />
-    			Counter ID: <input id="CID" type="text" name="CID" size="35">
-        </div>
         <input id="create" class="btn" type="button" value="Create Counter" onclick="createCounter();" />
         <input id="add" class="btn" type="button" value="Add to counter" onclick="addToCounter();" />
         <input id="subtract" class="btn" type="button" value="Subtract from counter" onclick="subtractFromCounter();" />
         <input id="get" class="btn" type="button" value="Get Counter Detail" onclick="getCounterDetails();" />
+        <input id="getAllCounters" class="btn" type="button" value="Get All Counters" onclick="getAllCounters();" />
     </div>
+    <div class="responseContainer">
+          <h4>Counter Value</h4>
+          <textarea id="CValue" rows="2" cols="35"></textarea>
+          <h4>Counter ID</h4>
+          <textarea id="CID" rows="2" cols="35"></textarea>
+          <h4>All IDS</h4>
+          <textarea id="AID" rows="10" cols="35"></textarea>
+          <h4>Exceptions</h4>
+          <textarea id="exceptions" rows="2" cols="35"></textarea>
+     </div>
 
 </div><!-- outer-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -1,0 +1,57 @@
+ body{
+          font-family: Arial;
+        }
+        .outer{
+          width: 500px;
+          padding: 20px;
+          border-radius: 5px;
+          padding: 20px auto;
+          margin:0px auto;
+          background: #ccc;
+        }
+        h1{
+          text-align: center;
+        }
+        h4{
+          margin-bottom: 5px;
+          margin-top: 10px;
+        }
+
+        h4:first-child{
+          margin-top: 0;
+        }
+        .btn{
+           margin-bottom: 20px;
+           clear: both;
+           float: left;
+           width: 145px;
+           border-radius: 4px;
+           padding: 7px;
+           box-shadow: none;
+           border: none;
+           background: #333;
+           color: #fff;
+           cursor: pointer;
+           border:1px solid #fff;
+        }
+        .clearfix:after{
+           visibility: hidden;
+           display: block;
+           font-size: 0;
+           content: " ";
+           clear: both;
+           height: 0;
+        }
+        .responseContainer{
+            float:right;
+		     }
+	       .btnsContainer{
+	        	float:left;
+        }
+        textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  max-width: 265px;
+}

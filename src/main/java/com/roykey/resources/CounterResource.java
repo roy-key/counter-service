@@ -2,6 +2,7 @@ package com.roykey.resources;
 
 import com.roykey.beans.responses.BasicResponse;
 import com.roykey.beans.responses.CounterResponse;
+import com.roykey.beans.responses.GetCountersResponse;
 import com.roykey.builders.CounterResponseBuilder;
 import com.roykey.excaptions.CounterException;
 import com.roykey.handlers.Counter;
@@ -77,5 +78,15 @@ public class CounterResource {
         } catch (CounterException counterException) {
             return CounterResponseBuilder.createBadResponse(counterException);
         }
+    }
+
+    @RequestMapping(
+            value = "counters",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BasicResponse> getAllCounterDetails() {
+
+            GetCountersResponse getCountersResponse = counter.getAllCountersDetails();
+            return CounterResponseBuilder.createOkResponse(getCountersResponse);
     }
 }

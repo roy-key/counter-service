@@ -1,6 +1,7 @@
 package com.roykey.handlers;
 
 import com.roykey.beans.responses.CounterResponse;
+import com.roykey.beans.responses.GetCountersResponse;
 import com.roykey.excaptions.CounterException;
 
 /**
@@ -14,4 +15,5 @@ public interface Counter {
     CounterResponse addToCounter(String counterId) throws CounterException;
     CounterResponse subtractFromCounter(String counterId) throws CounterException;
     CounterResponse getCounterDetails(String counterId) throws CounterException;
+    GetCountersResponse getAllCountersDetails();
 }

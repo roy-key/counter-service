@@ -1,7 +1,8 @@
 package com.roykey.builders;
 
+import com.roykey.beans.CommonParameters;
 import com.roykey.beans.responses.BasicResponse;
-import com.roykey.beans.responses.CounterResponse;
+import com.roykey.beans.responses.ResponseObject;
 import com.roykey.excaptions.CounterException;
 import com.roykey.factories.BadResponseFactory;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +12,8 @@ import org.springframework.http.ResponseEntity;
  */
 public class CounterResponseBuilder {
 
-    public static ResponseEntity<BasicResponse> createOkResponse(CounterResponse counterResponse){
-        BasicResponse basicResponse = new BasicResponse(counterResponse, 0);
+    public static ResponseEntity<BasicResponse> createOkResponse(ResponseObject counterResponse){
+        BasicResponse basicResponse = new BasicResponse(counterResponse, CommonParameters.RESPONSE_STATUS_SUCCESS);
         return ResponseEntity.ok(basicResponse);
     }
 

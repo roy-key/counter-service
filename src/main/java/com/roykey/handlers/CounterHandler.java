@@ -22,7 +22,7 @@ public class CounterHandler implements Counter {
     @Override
     public CounterResponse createCounter() {
 
-        CounterEntity counterEntity = new CounterEntity(INITIAL_COUNTER_VALUE);
+        CounterEntity counterEntity = new CounterEntity();
         CounterEntity counterEntityAfterAdding = counterDAO.insertCounterEntityToDB(counterEntity);
         CounterResponse counterResponse = new CounterResponse(counterEntityAfterAdding);
         return counterResponse;
@@ -32,34 +32,26 @@ public class CounterHandler implements Counter {
     public CounterResponse addToCounter(String counterId) throws CounterException {
 
         CounterEntity counterEntity = counterDAO.getCounterEntity(counterId);
-        increaseCountByOne(counterEntity);
+
+        counterEntity.getAndIncrement();
+
         CounterEntity counterEntityAfterUpdate = counterDAO.updateCounterEntityFromDB(counterEntity);
 
         CounterResponse counterResponse = new CounterResponse(counterEntityAfterUpdate);
         return counterResponse;
-    }
-
-    private void increaseCountByOne(CounterEntity counterEntityFromDB) {
-        int count = counterEntityFromDB.getCount();
-        count++;
-        counterEntityFromDB.setCount(count);
     }
 
     @Override
     public CounterResponse subtractFromCounter(String counterId) throws CounterException {
 
         CounterEntity counterEntity = counterDAO.getCounterEntity(counterId);
-        subtractCountByOne(counterEntity);
+
+        counterEntity.getAndDecrement();
+
         CounterEntity counterEntityAfterUpdate = counterDAO.updateCounterEntityFromDB(counterEntity);
 
         CounterResponse counterResponse = new CounterResponse(counterEntityAfterUpdate);
         return counterResponse;
-    }
-
-    private void subtractCountByOne(CounterEntity counterEntityFromDB) {
-        int count = counterEntityFromDB.getCount();
-        count--;
-        counterEntityFromDB.setCount(count);
     }
 
     @Override

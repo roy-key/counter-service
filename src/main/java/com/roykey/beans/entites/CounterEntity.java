@@ -4,6 +4,8 @@ import com.roykey.beans.CommonParameters;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Created by roykey on 11/01/2016.
  */
@@ -12,13 +14,10 @@ public class CounterEntity {
 
     @Id
     private String id;
-    private int count;
+    private AtomicInteger incrementer;
 
     public CounterEntity() {
-    }
-
-    public CounterEntity(int initialCount) {
-        this.count = initialCount;
+        incrementer = new AtomicInteger();
     }
 
     public String getId() {
@@ -30,10 +29,14 @@ public class CounterEntity {
     }
 
     public int getCount() {
-        return count;
+        return incrementer.get();
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void getAndIncrement() {
+        incrementer.getAndIncrement();
+    }
+
+    public void getAndDecrement() {
+        incrementer.getAndDecrement();
     }
 }

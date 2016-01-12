@@ -1,11 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Roy Keynan Counter</title>
-</head>
-<body>
-    <h1> Hi </h1>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+		var createCounter = function(){
 
+			$.ajax({
+ 			 	url: 'counters',
+  				type: 'POST',
+  				success: function(data) {
+                    handleResponse(data);
+  				},
+  				error: function(e) {
+					console.log(e.message);
+  				}
+			});
+
+		}
+
+		var addToCounter = function(){
+
+			$.ajax({
+ 			 	url: 'counters/' + $('#CID').val() + '/add',
+  				type: 'POST',
+  				success: function(data) {
+                    handleResponse(data);
+  				},
+  				error: function(e) {
+					console.log(e.message);
+  				}
+			});
+		}
+
+		var subtractFromCounter = function(){
+
+			$.ajax({
+ 			 	url: 'counters/' + $('#CID').val() + '/subtract',
+  				type: 'POST',
+  				success: function(data) {
+                    handleResponse(data);
+  				},
+  				error: function(e) {
+					console.log(e.message);
+  				}
+			});
+
+		}
+
+		var getCounterDetails = function(){
+
+			$.ajax({
+ 			 	url: 'counters/' + $('#CID').val(),
+  				type: 'GET',
+  				success: function(data) {
+                    handleResponse(data);
+  				},
+  				error: function(e) {
+					console.log(e.message);
+  				}
+			});
+		}
+
+		var handleResponse = function(data){
+            if (data.responseStatus == 0){
+
+                $('#CValue').val(data.responseObject.counterValue);
+                $('#CID').val(data.responseObject.id);
+
+			}else{
+				    console.log(data.responseObject.errorMessage);
+				}
+		}
+	</script>
+
+
+    <style>
+        .outer{
+                width:500px;
+                padding:20px auto;
+                margin:50px auto;
+        }
+        .btn{
+                margin-bottom:20px;
+                clear:both;
+                float:left;
+        }
+        .clearfix:after{
+                visibility: hidden;
+                display: block;
+                font-size: 0;
+                content: " ";
+                clear: both;
+                height: 0;
+        }
+        .responseContainer{
+                float:right;
+		        width:300px;
+	    }
+	    .btnsContainer{
+	        	float:left;
+        }
+    </style>
+
+    <title>Cunter Project</title>
+</head>
+
+<body>
+<div class="outer">
+    <div class="btnsContainer clearfix">
+        <div class="responseContainer">
+    			Counter Value: <input id="CValue" type="text" name="CValue"><br /><br />
+    			Counter ID: <input id="CID" type="text" name="CID">
+        </div>
+        <input id="create" class="btn" type="button" value="Create Counter" onclick="createCounter();" />
+        <input id="add" class="btn" type="button" value="Add to counter" onclick="addToCounter();" />
+        <input id="subtract" class="btn" type="button" value="Subtract from counter" onclick="subtractFromCounter();" />
+        <input id="get" class="btn" type="button" value="Get Counter Detail" onclick="getCounterDetails();" />
+    </div>
+
+</div><!-- outer-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 </body>
 </html>

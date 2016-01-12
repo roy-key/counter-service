@@ -1,6 +1,7 @@
 
 var createCounter = function(){
 
+    initExceptionBox();
     $.ajax({
  	    url: 'counters',
   		type: 'POST',
@@ -16,49 +17,67 @@ var createCounter = function(){
 
 var addToCounter = function(){
 
-    $.ajax({
- 	    url: 'counters/' + $('#CID').val() + '/add',
-  		type: 'POST',
-  		success: function(data) {
-            handleResponse(data);
-  		},
-  		error: function(e) {
-		    $('#exceptions').val(e.responseJSON.responseObject.errorMessage);
-  		}
-	});
+    initExceptionBox();
+    if($('#CID').val() == ''){
+        $('#exceptions').val("Please fill the ID in the CounterId box");
+    }
+    else{
+        $.ajax({
+            url: 'counters/' + $('#CID').val() + '/add',
+            type: 'POST',
+            success: function(data) {
+                handleResponse(data);
+            },
+            error: function(e) {
+                $('#exceptions').val(e.responseJSON.responseObject.errorMessage);
+            }
+        });
+	}
 }
 
 var subtractFromCounter = function(){
 
-    $.ajax({
- 	    url: 'counters/' + $('#CID').val() + '/subtract',
-  		type: 'POST',
-  		success: function(data) {
-            handleResponse(data);
-  		},
-  		error: function(e) {
-		    $('#exceptions').val(e.responseJSON.responseObject.errorMessage);
-  		}
-	});
-
+    initExceptionBox();
+    if ($('#CID').val() == ''){
+            $('#exceptions').val("Please fill the ID in the CounterId box");
+    }
+    else {
+        $.ajax({
+            url: 'counters/' + $('#CID').val() + '/subtract',
+            type: 'POST',
+            success: function(data) {
+                handleResponse(data);
+            },
+            error: function(e) {
+                $('#exceptions').val(e.responseJSON.responseObject.errorMessage);
+            }
+        });
+    }
 }
 
 var getCounterDetails = function(){
 
-    $.ajax({
-        url: 'counters/' + $('#CID').val(),
-  		type: 'GET',
-  		    success: function(data) {
-                    handleResponse(data);
-  			},
-  			error: function(e) {
-			    $('#exceptions').val(e.responseJSON.responseObject.errorMessage);
-  			}
-	});
+    initExceptionBox();
+    if ($('#CID').val() == ''){
+        $('#exceptions').val("Please fill the ID in the CounterId box");
+    }
+    else {
+        $.ajax({
+            url: 'counters/' + $('#CID').val(),
+            type: 'GET',
+                success: function(data) {
+                        handleResponse(data);
+                },
+                error: function(e) {
+                    $('#exceptions').val(e.responseJSON.responseObject.errorMessage);
+                }
+        });
+    }
 }
 
 var getAllCounters = function(){
 
+    initExceptionBox();
     $.ajax({
         url: 'counters',
   		type: 'GET',
@@ -79,12 +98,21 @@ var handleResponse = function(data){
 }
 
 var handleGetAllResponse = function(data){
+
     var arr = [];
     var responseArr = data.responseObject.counterResponseList;
-    for (i = 0; i < responseArr.length; i++) {
+    var arrLength = responseArr.length;
+
+    for (i = 0; i < arrLength; i++) {
         arr.push(responseArr[i].id);
 	}
 
     $('#AID').val(arr.join(", "));
+
+}
+
+var initExceptionBox = function(){
+
+    $('#exceptions').val('');
 
 }

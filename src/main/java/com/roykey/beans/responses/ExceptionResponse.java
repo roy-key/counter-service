@@ -3,7 +3,7 @@ package com.roykey.beans.responses;
 /**
  * Created by roykey on 12/01/2016.
  * 
- * Exception response holds informative errorMessage about the exceptaion.
+ * Exception response holds informative errorMessage about the exception.
  */
 public class ExceptionResponse implements ResponseObject {
 

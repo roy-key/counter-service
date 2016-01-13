@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 public class BadResponseFactory {
 
     /**
-     * Crate bad response response entity.
+     * Crate bad response.
      *
      * @param counterException the counter exception
      * @return the response entity

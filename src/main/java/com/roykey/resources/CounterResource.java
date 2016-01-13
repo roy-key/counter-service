@@ -40,7 +40,7 @@ public class CounterResource {
     }
 
     /**
-     * Add to counter response entity.
+     * Add 1 to the counter matching th id
      *
      * @param id the id
      * @return the response entity
@@ -61,7 +61,7 @@ public class CounterResource {
     }
 
     /**
-     * Subtract from counter response entity.
+     * Subtract 1 from the counter matching th id
      *
      * @param id the id
      * @return the response entity
@@ -101,15 +101,15 @@ public class CounterResource {
     }
 
     /**
-     * Gets all counter details.
+     * Gets all counters details.
      *
-     * @return the all counter details
+     * @return the all counters details
      */
     @RequestMapping(
             value = "counters",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BasicResponse> getAllCounterDetails() {
+    public ResponseEntity<BasicResponse> getAllCountersDetails() {
 
             GetCountersResponse getCountersResponse = counter.getAllCountersDetails();
             return CounterResponseBuilder.createOkResponse(getCountersResponse);

@@ -13,10 +13,10 @@ import org.springframework.http.ResponseEntity;
 public class CounterResponseBuilder {
 
     /**
-     * Create ok response response entity.
+     * Create ok response
      *
      * @param counterResponse the counter response
-     * @return the response entity
+     * @return the ok response entity
      */
     public static ResponseEntity<BasicResponse> createOkResponse(ResponseObject counterResponse){
         BasicResponse basicResponse = new BasicResponse(counterResponse, CommonParameters.RESPONSE_STATUS_SUCCESS);
@@ -24,10 +24,10 @@ public class CounterResponseBuilder {
     }
 
     /**
-     * Create bad response response entity.
+     * Create bad response
      *
      * @param counterException the counter exception
-     * @return the response entity
+     * @return the bad response entity
      */
     public static ResponseEntity<BasicResponse> createBadResponse(CounterException counterException) {
         return BadResponseFactory.crateBadResponse(counterException);

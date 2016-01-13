@@ -24,7 +24,7 @@ public class CounterException extends Exception {
     }
 
     /**
-     * Gets http status.
+     * Gets the http status.
      *
      * @return the http status
      */
@@ -33,7 +33,7 @@ public class CounterException extends Exception {
     }
 
     /**
-     * Sets http status.
+     * Sets the http status.
      *
      * @param httpStatus the http status
      */
@@ -42,7 +42,7 @@ public class CounterException extends Exception {
     }
 
     /**
-     * Gets internal error.
+     * Gets the internal error.
      *
      * @return the internal error
      */
@@ -51,7 +51,7 @@ public class CounterException extends Exception {
     }
 
     /**
-     * Sets internal error.
+     * Sets the internal error.
      *
      * @param internalError the internal error
      */

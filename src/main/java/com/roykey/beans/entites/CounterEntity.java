@@ -53,7 +53,7 @@ public class CounterEntity {
     }
 
     /**
-     * Calls the and increment of the incrementer.
+     * Calls the and increment method of the incrementer.
      * Atomically increase the value by 1.
      */
     public void getAndIncrement() {
@@ -61,7 +61,7 @@ public class CounterEntity {
     }
 
     /**
-     * Calls the and decrement of the incrementer.
+     * Calls the and decrement method of the incrementer.
      * Atomically decrease the value by 1.
      */
     public void getAndDecrement() {

@@ -15,14 +15,14 @@ public interface Counter {
     int INITIAL_COUNTER_VALUE = 0;
 
     /**
-     * Create counter counter response.
+     * Create a counter.
      *
      * @return the counter response
      */
     CounterResponse createCounter();
 
     /**
-     * Add to counter counter response.
+     * Add 1 to the counter matching the id
      *
      * @param counterId the counter id
      * @return the counter response
@@ -31,7 +31,7 @@ public interface Counter {
     CounterResponse addToCounter(String counterId) throws CounterException;
 
     /**
-     * Subtract from counter counter response.
+     * Subtract 1 from the counter matching the id
      *
      * @param counterId the counter id
      * @return the counter response
@@ -40,7 +40,7 @@ public interface Counter {
     CounterResponse subtractFromCounter(String counterId) throws CounterException;
 
     /**
-     * Gets counter details.
+     * Gets the counter details.
      *
      * @param counterId the counter id
      * @return the counter details
@@ -49,7 +49,7 @@ public interface Counter {
     CounterResponse getCounterDetails(String counterId) throws CounterException;
 
     /**
-     * Gets all counters details.
+     * Gets all of the counters details.
      *
      * @return the all counters details
      */
